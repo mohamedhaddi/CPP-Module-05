@@ -6,26 +6,30 @@
 /*   By: mhaddi <mhaddi@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/20 15:55:15 by mhaddi            #+#    #+#             */
-/*   Updated: 2022/03/21 16:57:55 by mhaddi           ###   ########.fr       */
+/*   Updated: 2022/03/21 17:18:41 by mhaddi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
 #include "Form.hpp"
+#include "ShrubberyCreationForm.hpp"
+#include "RobotomyRequestForm.hpp"
+#include "PresidentialPardonForm.hpp"
 
 int main()
 {
 	try {
 
-		Form f1;
-		Form f2("chahadatSsokna", 100, 100);
-		Form f3(f2);
+		ShrubberyCreationForm f1("home");
+		RobotomyRequestForm f2("foo");
+		PresidentialPardonForm f3("bar");
+		PresidentialPardonForm f4(f3);
+		PresidentialPardonForm f5;
 
-		Bureaucrat b1("mhaddi", 100);
+		Bureaucrat b1("mhaddi", 6);
 
-		b1.signForm(f3);
-
-		f1 = f3;
+		b1.signForm(f4);
+		b1.executeForm(f4);
 
 	}
 	catch (std::exception &e) {

@@ -6,7 +6,7 @@
 /*   By: mhaddi <mhaddi@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 16:25:58 by mhaddi            #+#    #+#             */
-/*   Updated: 2022/03/21 18:04:20 by mhaddi           ###   ########.fr       */
+/*   Updated: 2022/03/21 19:38:48 by mhaddi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void RobotomyRequestForm::execute(const Bureaucrat &executor) const
 
 		std::cout << "* Drilling noises *" << std::endl;
 
-		srand (time(NULL));
+		srand(time(NULL));
 		if (rand() % 2)
 			std::cout << name << " has been robotomized successfully." << std::endl;
 		else

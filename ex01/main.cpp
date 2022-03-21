@@ -6,24 +6,26 @@
 /*   By: mhaddi <mhaddi@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/20 15:55:15 by mhaddi            #+#    #+#             */
-/*   Updated: 2022/03/21 12:12:29 by mhaddi           ###   ########.fr       */
+/*   Updated: 2022/03/21 15:20:18 by mhaddi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
+#include "Form.hpp"
 
 int main()
 {
 	try {
 
-		Bureaucrat a;
-		Bureaucrat b("mhaddi", 148);
-		Bureaucrat c(b);
-		a = b;
+		Form f1;
+		Form f2("chahadatSsokna", 100, 100);
+		Form f3(f2);
 
-		a.decrementGrade();
-		a.decrementGrade();
-		a.decrementGrade();
+		Bureaucrat b1("mhaddi", 100);
+
+		b1.signForm(f3);
+
+		f1 = f3;
 
 	}
 	catch (std::exception &e) {

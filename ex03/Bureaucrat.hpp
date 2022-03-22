@@ -6,7 +6,7 @@
 /*   By: mhaddi <mhaddi@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/20 15:13:41 by mhaddi            #+#    #+#             */
-/*   Updated: 2022/03/21 17:17:09 by mhaddi           ###   ########.fr       */
+/*   Updated: 2022/03/22 18:25:31 by mhaddi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,10 @@
 # define RED "\033[0;31m"
 # define GREEN "\033[0;32m"
 # define CYAN "\033[0;36m"
+# define MAGENTA "\033[0;35m"
+# define YELLOW "\033[0;33m"
+# define BOLD_GREEN "\033[1;32m"
+# define BOLD_RED "\033[1;31m"
 # define RESET "\033[0m"
 
 # include <string>

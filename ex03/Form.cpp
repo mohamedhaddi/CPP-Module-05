@@ -6,7 +6,7 @@
 /*   By: mhaddi <mhaddi@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 12:17:41 by mhaddi            #+#    #+#             */
-/*   Updated: 2022/03/21 17:55:40 by mhaddi           ###   ########.fr       */
+/*   Updated: 2022/03/22 18:27:34 by mhaddi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,9 @@
 #include "Bureaucrat.hpp"
 
 AForm::AForm(void) : _name("unnamed"), _signed(false), _required_grade_to_sign(150), _required_grade_to_execute(150) {
-	std::cout 	<< "Form default constructor called." << std::endl 
-				<< "`name` has been set to \"unnamed\" and the required grades have been set to 150 by default." << std::endl
+	std::cout 	<< MAGENTA << "Form default constructor called." << std::endl 
+				<< "`name` has been set to \"unnamed\" and the required grades have been set to 150 by default."
+				<< RESET << std::endl
 				<< *this << std::endl;
 	return ;
 }
@@ -26,9 +27,10 @@ AForm::AForm(std::string name, int required_grade_to_sign, int required_grade_to
 	_required_grade_to_sign(required_grade_to_sign),
 	_required_grade_to_execute(required_grade_to_execute)
 {
-	std::cout 	<< "Form constructor called with `name`: \"" << name << "\"," << std::endl
+	std::cout 	<< MAGENTA << "Form constructor called with `name`: \"" << name << "\"," << std::endl
 				<< "and a `required grade to sign`: " << required_grade_to_sign << "," << std::endl
-				<< "and a `required grade to execute`: " << required_grade_to_execute << "." << std::endl
+				<< "and a `required grade to execute`: " << required_grade_to_execute << "."
+				<< RESET << std::endl
 				<< *this << std::endl;
 	if (required_grade_to_sign < 1 || required_grade_to_execute < 1)
 		throw AForm::GradeTooHighException();
@@ -43,11 +45,12 @@ AForm::AForm(AForm const &src) :
 	_required_grade_to_sign(src._required_grade_to_sign),
 	_required_grade_to_execute(src._required_grade_to_execute)
 {
-	std::cout 	<< "Form copy constructor called." << std::endl
+	std::cout 	<< MAGENTA << "Form copy constructor called." << std::endl
 				<< "`name` has been set to: \"" << src._name << "\"." << std::endl
 				<< "`signed` has been set to: " << (src._signed ? "True" : "False") << "." << std::endl
 				<< "`required grade to sign` has been set to: " << src._required_grade_to_sign << "." << std::endl
-				<< "`required grade to execute` has been set to " << src._required_grade_to_execute << "." << std::endl
+				<< "`required grade to execute` has been set to " << src._required_grade_to_execute << "."
+				<< RESET << std::endl
 				<< *this << std::endl;
 	return ;
 }
@@ -55,8 +58,7 @@ AForm::AForm(AForm const &src) :
 AForm::~AForm(void) {
 	std::string name = this->_name;
 	name[0] = std::toupper(name[0]);
-	std::cout << "Form destructor called." << std::endl
-			  << "Form " << name << " has been destroyed." << std::endl;
+	std::cout << MAGENTA << "Form destructor called." << RESET << std::endl;
 	return ;
 }
 
@@ -94,7 +96,7 @@ int AForm::getRequiredGradeToExecute(void) const {
 }
 
 AForm & AForm::operator=(AForm const & rhs) {
-	std::cout << "Form assignment operator called." << std::endl;
+	std::cout << MAGENTA << "Form assignment operator called." << RESET << std::endl;
 	if (this != &rhs)
 		this->_signed = rhs._signed;
 	std::cout << *this << std::endl;
@@ -104,7 +106,7 @@ AForm & AForm::operator=(AForm const & rhs) {
 std::ostream & operator<<(std::ostream & o, AForm const & rhs) {
 	std::string name = rhs.getName();
 	name[0] = std::toupper(name[0]);
-	o 	<< GREEN << "Form " << PURPLE << name << GREEN << " is ";
+	o 	<< GREEN << "Form " << MAGENTA << name << GREEN << " is ";
 	if (rhs.getSigned())
 		o << BOLD_GREEN << "signed" << GREEN;
 	else

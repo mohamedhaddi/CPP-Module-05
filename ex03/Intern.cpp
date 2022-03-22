@@ -6,38 +6,36 @@
 /*   By: mhaddi <mhaddi@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 18:01:57 by mhaddi            #+#    #+#             */
-/*   Updated: 2022/03/21 20:04:56 by mhaddi           ###   ########.fr       */
+/*   Updated: 2022/03/22 18:55:39 by mhaddi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Intern.hpp"
-#include <iostream>
 #include "ShrubberyCreationForm.hpp"
-#include "RobotomyRequestForm.hpp"
-#include "PresidentialPardonForm.hpp"
+#include <iostream>
 
 Intern::Intern(void)
 {
-	std::cout << "Intern constructor called." << std::endl;
+	std::cout << CYAN << "Intern constructor called." << RESET << std::endl;
 	return ;
 }
 
 Intern::Intern(Intern const &src)
 {
-	std::cout << "Intern copy constructor called." << std::endl;
+	std::cout << CYAN << "Intern copy constructor called." << RESET << std::endl;
 	*this = src;
 	return ;
 }
 
 Intern::~Intern(void)
 {
-	std::cout << "Intern destructor called." << std::endl;
+	std::cout << CYAN << "Intern destructor called." << RESET << std::endl;
 	return ;
 }
 
 Intern &Intern::operator=(Intern const &rhs)
 {
-	std::cout << "Intern assignment operator called." << std::endl;
+	std::cout << CYAN << "Intern assignment operator called." << RESET << std::endl;
 	(void)rhs;
 	return *this;
 }
@@ -53,37 +51,47 @@ std::string const toLower(std::string str)
     return (str);
 }
 
+AForm *Intern::makeShrubberyCreationForm(std::string target)
+{
+	return (new ShrubberyCreationForm(target));
+}
+
+AForm *Intern::makeRobotomyRequestForm(std::string target)
+{
+	return (new RobotomyRequestForm(target));
+}
+
+AForm *Intern::makePresidentialPardonForm(std::string target)
+{
+	return (new PresidentialPardonForm(target));
+}
+
 AForm *Intern::makeForm(std::string formName, std::string target)
 {
-	std::string forms[3] = {
-		"shrubbery creation",
-		"robotomy request",
-		"presidential pardon"
+	AForm *(Intern::*forms[4])(std::string) =
+	{
+		NULL,
+		&Intern::makeShrubberyCreationForm,
+		&Intern::makeRobotomyRequestForm,
+		&Intern::makePresidentialPardonForm
 	};
 
-	size_t formCode = forms->find(toLower(formName));
+	int formNumber = (
+		1 * (toLower(formName) == "shrubbery creation") +
+		2 * (toLower(formName) == "robotomy request") +
+		3 * (toLower(formName) == "presidential pardon")
+	);
 
-	switch (formCode)
-	{
-		case 0: case 1: case 2:
-			std::cout << "Intern creates " << formName << std::endl;
-		default:
-			throw Intern::FormNotFoundException();
-	}
+	if (formNumber == 0)
+		throw Intern::FormNotFoundException();
 
-	switch (formCode)
-	{
-		case 0:
-			return (new ShrubberyCreationForm(target));
-		case 1:
-			return (new RobotomyRequestForm(target));
-		case 2:
-			return (new PresidentialPardonForm(target));
-	}
+	std::cout << CYAN << "Intern creates " << formName << " for " << target << "." << RESET << std::endl;
+
+	return (this->*forms[formNumber])(target);
 }
 
 const char *Intern::FormNotFoundException::what() const throw()
 {
-	return ("Form not found.");
+	return "Form not found.";
 }
 

@@ -1,24 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   AForm.hpp                                          :+:      :+:    :+:   */
+/*   Form.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mhaddi <mhaddi@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 12:14:03 by mhaddi            #+#    #+#             */
-/*   Updated: 2022/03/21 15:42:13 by mhaddi           ###   ########.fr       */
+/*   Updated: 2022/03/22 18:25:38 by mhaddi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FORM_HPP
 # define FORM_HPP
-
-# define RED "\033[0;31m"
-# define GREEN "\033[0;32m"
-# define BOLD_GREEN "\033[1;32m"
-# define BOLD_RED "\033[1;31m"
-# define PURPLE "\033[0;35m"
-# define RESET "\033[0m"
 
 # include <string>
 # include <stdexcept>

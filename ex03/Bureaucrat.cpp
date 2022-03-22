@@ -6,7 +6,7 @@
 /*   By: mhaddi <mhaddi@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/20 15:13:37 by mhaddi            #+#    #+#             */
-/*   Updated: 2022/03/21 17:17:54 by mhaddi           ###   ########.fr       */
+/*   Updated: 2022/03/22 18:27:04 by mhaddi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,17 @@
 #include <ostream>
 
 Bureaucrat::Bureaucrat(void) : _name("unnamed"), _grade(150) {
-	std::cout 	<< "Bureaucrat default constructor called." << std::endl 
-				<< "`name` has been set to \"unnamed\" and `grade` has been set to 150 by default." << std::endl
+	std::cout 	<< YELLOW << "Bureaucrat default constructor called." << std::endl 
+				<< "`name` has been set to \"unnamed\" and `grade` has been set to 150 by default."
+				<< RESET << std::endl
 				<< *this << std::endl;
 	return ;
 }
 
 Bureaucrat::Bureaucrat(std::string name, int grade) : _name(name) {
 
-	std::cout 	<< "Bureaucrat constructor called with name \"" << name << "\" and grade " << grade << "." << std::endl;
+	std::cout 	<< YELLOW << "Bureaucrat constructor called with name \"" << name << "\" and grade " << grade << "."
+				<< RESET << std::endl;
 
 	if (grade < 1)
 		throw Bureaucrat::GradeTooHighException();
@@ -39,23 +41,20 @@ Bureaucrat::Bureaucrat(std::string name, int grade) : _name(name) {
 
 Bureaucrat::Bureaucrat(Bureaucrat const & src): _name(src._name), _grade(src._grade)
 {
-	std::cout 	<< "Bureaucrat copy constructor called." << std::endl
+	std::cout 	<< YELLOW << "Bureaucrat copy constructor called." << std::endl
 				<< "`name` has been set to \"" << src._name << "\"," << std::endl
 				<< "and `grade` has been set to " << src._grade << "." << std::endl
-				<< *this << std::endl;
+				<< RESET << *this << std::endl;
 	return ;
 }
 
 Bureaucrat::~Bureaucrat(void) {
-	/*
-	 *	std::cout 	<< "Bureaucrat destructor called." << std::endl
-	 * 				<< "Bureaucrat \"" << this->_name << "\" has been destroyed." << std::endl;
-	 */
+	std::cout << YELLOW << "Bureaucrat destructor called." << RESET << std::endl;
 	return ;
 }
 
 Bureaucrat & Bureaucrat::operator=(Bureaucrat const & rhs) {
-	std::cout << "Bureaucrat assignment operator called." << std::endl;
+	std::cout << YELLOW << "Bureaucrat assignment operator called." << RESET << std::endl;
 	if (this != &rhs)
 		this->_grade = rhs._grade;
 	std::cout << *this << std::endl;

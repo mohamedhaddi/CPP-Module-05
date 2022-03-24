@@ -24,14 +24,14 @@ class AForm {
 
 		std::string const 	_name;
 		bool 				_signed;
-		int const			_required_grade_to_sign;
-		int const			_required_grade_to_execute;
+		int const			_requiredGradeToSign;
+		int const			_requiredGradeToExecute;
 
 	public:
 
 		AForm(void);
 		AForm(AForm const & src);
-		AForm(std::string const name, int const required_grade_to_sign, int const required_grade_to_execute);
+		AForm(std::string const name, int const requiredGradeToSign, int const requiredGradeToExecute);
 		virtual ~AForm(void);
 
 		AForm &		operator=(AForm const & rhs);

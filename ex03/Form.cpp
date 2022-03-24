@@ -6,14 +6,14 @@
 /*   By: mhaddi <mhaddi@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 12:17:41 by mhaddi            #+#    #+#             */
-/*   Updated: 2022/03/22 18:27:34 by mhaddi           ###   ########.fr       */
+/*   Updated: 2022/03/24 18:15:04 by mhaddi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Form.hpp"
 #include "Bureaucrat.hpp"
 
-AForm::AForm(void) : _name("unnamed"), _signed(false), _required_grade_to_sign(150), _required_grade_to_execute(150) {
+AForm::AForm(void) : _name("unnamed"), _signed(false), _requiredGradeToSign(150), _requiredGradeToExecute(150) {
 	std::cout 	<< MAGENTA << "Form default constructor called." << std::endl 
 				<< "`name` has been set to \"unnamed\" and the required grades have been set to 150 by default."
 				<< RESET << std::endl
@@ -21,20 +21,20 @@ AForm::AForm(void) : _name("unnamed"), _signed(false), _required_grade_to_sign(1
 	return ;
 }
 
-AForm::AForm(std::string name, int required_grade_to_sign, int required_grade_to_execute) :
+AForm::AForm(std::string name, int requiredGradeToSign, int requiredGradeToExecute) :
 	_name(name),
 	_signed(false),
-	_required_grade_to_sign(required_grade_to_sign),
-	_required_grade_to_execute(required_grade_to_execute)
+	_requiredGradeToSign(requiredGradeToSign),
+	_requiredGradeToExecute(requiredGradeToExecute)
 {
 	std::cout 	<< MAGENTA << "Form constructor called with `name`: \"" << name << "\"," << std::endl
-				<< "and a `required grade to sign`: " << required_grade_to_sign << "," << std::endl
-				<< "and a `required grade to execute`: " << required_grade_to_execute << "."
+				<< "and a `required grade to sign`: " << requiredGradeToSign << "," << std::endl
+				<< "and a `required grade to execute`: " << requiredGradeToExecute << "."
 				<< RESET << std::endl
 				<< *this << std::endl;
-	if (required_grade_to_sign < 1 || required_grade_to_execute < 1)
+	if (requiredGradeToSign < 1 || requiredGradeToExecute < 1)
 		throw AForm::GradeTooHighException();
-	if (required_grade_to_sign > 150 || required_grade_to_execute > 150)
+	if (requiredGradeToSign > 150 || requiredGradeToExecute > 150)
 		throw AForm::GradeTooLowException();
 	return ;
 }
@@ -42,14 +42,14 @@ AForm::AForm(std::string name, int required_grade_to_sign, int required_grade_to
 AForm::AForm(AForm const &src) :
 	_name(src._name),
 	_signed(src._signed),
-	_required_grade_to_sign(src._required_grade_to_sign),
-	_required_grade_to_execute(src._required_grade_to_execute)
+	_requiredGradeToSign(src._requiredGradeToSign),
+	_requiredGradeToExecute(src._requiredGradeToExecute)
 {
 	std::cout 	<< MAGENTA << "Form copy constructor called." << std::endl
 				<< "`name` has been set to: \"" << src._name << "\"." << std::endl
 				<< "`signed` has been set to: " << (src._signed ? "True" : "False") << "." << std::endl
-				<< "`required grade to sign` has been set to: " << src._required_grade_to_sign << "." << std::endl
-				<< "`required grade to execute` has been set to " << src._required_grade_to_execute << "."
+				<< "`required grade to sign` has been set to: " << src._requiredGradeToSign << "." << std::endl
+				<< "`required grade to execute` has been set to " << src._requiredGradeToExecute << "."
 				<< RESET << std::endl
 				<< *this << std::endl;
 	return ;
@@ -64,7 +64,7 @@ AForm::~AForm(void) {
 
 void AForm::beSigned(const Bureaucrat &bureaucrat)
 {
-	if (bureaucrat.getGrade() > this->_required_grade_to_sign)
+	if (bureaucrat.getGrade() > this->_requiredGradeToSign)
 		throw AForm::GradeTooLowException();
 	this->_signed = true;
 	std::cout << "Form " << this->_name << " has been signed by " << bureaucrat.getName() << "." << std::endl;
@@ -88,11 +88,11 @@ bool AForm::getSigned(void) const {
 }
 
 int AForm::getRequiredGradeToSign(void) const {
-	return this->_required_grade_to_sign;
+	return this->_requiredGradeToSign;
 }
 
 int AForm::getRequiredGradeToExecute(void) const {
-	return this->_required_grade_to_execute;
+	return this->_requiredGradeToExecute;
 }
 
 AForm & AForm::operator=(AForm const & rhs) {

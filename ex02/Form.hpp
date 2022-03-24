@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   AForm.hpp                                          :+:      :+:    :+:   */
+/*   Form.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mhaddi <mhaddi@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 12:14:03 by mhaddi            #+#    #+#             */
-/*   Updated: 2022/03/21 15:42:13 by mhaddi           ###   ########.fr       */
+/*   Updated: 2022/03/24 18:10:07 by mhaddi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,14 +31,14 @@ class AForm {
 
 		std::string const 	_name;
 		bool 				_signed;
-		int const			_required_grade_to_sign;
-		int const			_required_grade_to_execute;
+		int const			_requiredGradeToSign;
+		int const			_requiredGradeToExecute;
 
 	public:
 
 		AForm(void);
 		AForm(AForm const & src);
-		AForm(std::string const name, int const required_grade_to_sign, int const required_grade_to_execute);
+		AForm(std::string const name, int const requiredGradeToSign, int const requiredGradeToExecute);
 		virtual ~AForm(void);
 
 		AForm &		operator=(AForm const & rhs);

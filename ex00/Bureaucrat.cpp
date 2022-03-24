@@ -6,7 +6,7 @@
 /*   By: mhaddi <mhaddi@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/20 15:13:37 by mhaddi            #+#    #+#             */
-/*   Updated: 2022/03/21 12:42:05 by mhaddi           ###   ########.fr       */
+/*   Updated: 2022/03/24 17:14:06 by mhaddi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,10 +46,10 @@ Bureaucrat::Bureaucrat(Bureaucrat const & src): _name(src._name), _grade(src._gr
 }
 
 Bureaucrat::~Bureaucrat(void) {
-	/*
-	 *	std::cout 	<< "Bureaucrat destructor called." << std::endl
-	 * 				<< "Bureaucrat \"" << this->_name << "\" has been destroyed." << std::endl;
-	 */
+	
+	std::cout 	<< "Bureaucrat destructor called." << std::endl
+	 			<< "Bureaucrat \"" << this->_name << "\" has been destroyed." << std::endl;
+	 
 	return ;
 }
 

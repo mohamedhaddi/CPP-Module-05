@@ -6,7 +6,7 @@
 /*   By: mhaddi <mhaddi@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/20 15:55:15 by mhaddi            #+#    #+#             */
-/*   Updated: 2022/03/21 16:57:55 by mhaddi           ###   ########.fr       */
+/*   Updated: 2022/03/24 17:11:46 by mhaddi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,6 @@ int main()
 		Bureaucrat b1("mhaddi", 100);
 
 		b1.signForm(f3);
-
-		f1 = f3;
 
 	}
 	catch (std::exception &e) {
